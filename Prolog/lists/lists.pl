@@ -51,4 +51,15 @@ partition([], Y, [], []).
 partition([X|Xs], Y, [X|Ls], Bs) :- X =< Y, partition(Xs, Y, Ls, Bs).
 partition([X|Xs], Y, Ls, [X|Bs]) :- X > Y, partition(Xs, Y, Ls, Bs).
 
+%last:
+last([L], L).
+last([_H|L2], L) :- last(L2,L).
 
+%prefix
+prefix([],L).
+prefix([H|G1],[H|G2]) :- prefix(G1, G2).
+
+%remove
+remove([],_,[]).
+remove([X|T], X, T).
+remove([H|T], X, [H|Ans]) :- remove(T, X, Ans).
